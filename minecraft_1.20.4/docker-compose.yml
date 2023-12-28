@@ -1,8 +1,9 @@
-version: '1'
+version: '3'
 
 services:
   server:
     build: .
+    restart: unless-stopped
     volumes:
       - data:/opt/minecraft
     ports:
@@ -10,9 +11,12 @@ services:
     environment:
       - EULA=true
       - MOTD=A\ Minecraft\ Server
-      #- JAVA_HEAP_MIN=2G
-      #- JAVA_HEAP_MAX=2G
-      #- DELETE_WORLD=false
+      - JAVA_HEAP_MIN=1G
+      - JAVA_HEAP_MAX=6G
+      - MAX_PLAYERS=5
+      - SPAWN_PROTECTION=0
+      - WHITE_LIST=true
+      - ADMIN=1lucas_
       #- ALLOW_FLIGHT=false
       #- ALLOW_NETHER=true
       #- DIFFICULTY=normal
@@ -23,19 +27,14 @@ services:
       #- GENERATE_STRUCTURES=true
       #- HARDCORE=false
       #- LEVEL_SEED=
-      #- MAX_PLAYERS=5
       #- ONLINE_MODE=true
       #- PVP=true
       #- SERVER_IP=
-      #- SERVER_PORT=25565
       #- SIMULATION_DISTANCE=16
       #- SPAWN_ANIMALS=true
       #- SPAWN_MONSTERS=true
       #- SPAWN_NPCS=true
-      #- SPAWN_PROTECTION=0
       #- VIEW_DISTANCE=16
-      - WHITE_LIST=true
-      - ADMIN=1lucas_
 
 volumes:
   data:
