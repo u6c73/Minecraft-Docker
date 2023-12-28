@@ -1,0 +1,5 @@
+#!/bin/sh
+
+pipe=/tmp/minecraft.input
+
+echo $1 >$pipe
